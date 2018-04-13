@@ -3,15 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "firebase": "firebase"
+    "firebase": "firebase",
+    "deploy": "firebase deploy --only functions",
+    "deploy-action": "gactions update --action_package action.json --project ${PROJECT}"
   },
   "engines": {
     "node": ">=6.11.5"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "dependencies": {
+    "actions-on-google": "^1.5.1",
+    "firebase-admin": "^5.11.0",
+    "firebase-functions": "^1.0.1"
+  },
   "devDependencies": {
     "firebase-tools": "^3.18.2"
-  }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
 }
