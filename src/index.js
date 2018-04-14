@@ -29,8 +29,8 @@ exports.echo = functions.https.onRequest((request, response) => {
   }
 
   const actionMap = new Map();
-  actionMap.set(app.StandardIntents.MAIN, mainIntent);
-  actionMap.set(app.StandardIntents.TEXT, rawInput);
+  actionMap.set('actions.intent.MAIN', mainIntent);
+  actionMap.set('actions.intent.TEXT', rawInput);
 
   app.handleRequest(actionMap);
 });
