@@ -21,9 +21,7 @@ exports.echo = functions.https.onRequest((request, response) => {
     } else {
       const inputPrompt = app.buildInputPrompt(
         true,
-        '<speak>You said, ' +
-          app.getRawInput() +
-          '</speak>',
+        `<speak>You said, ${app.getRawInput()}</speak>`,
         NO_INPUTS
       );
       app.ask(inputPrompt);
