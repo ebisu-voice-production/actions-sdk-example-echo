@@ -1,7 +1,7 @@
 {
   "name": "actions-sdk-example-echo",
   "version": "1.0.0",
-  "description": "",
+  "description": "An Example of Actions on Google by Firebase Cloud Functions",
   "main": "src/index.js",
   "scripts": {
     "firebase": "firebase",
@@ -21,7 +21,6 @@
   "devDependencies": {
     "firebase-tools": "^3.18.2"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Actions on Google", "Cloud Functions for Firebase"],
   "license": "MIT"
 }
