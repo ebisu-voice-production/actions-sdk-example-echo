@@ -1,21 +1,15 @@
 const ActionsSdkApp = require('actions-on-google').ActionsSdkApp;
 const functions = require('firebase-functions');
 
-const NO_INPUTS = ["I didn't hear that."];
 const mainIntent = app => {
-  const inputPrompt = app.buildInputPrompt(true, '<speak>Hi!</speak>', NO_INPUTS);
-  app.ask(inputPrompt);
+  app.ask('Hi! Can you say something? You can finish this conversation to say bye.');
 };
 const rawInput = app => {
-  if (app.getRawInput() === 'bye') {
+  const rawInput = app.getRawInput();
+  if (rawInput === 'bye') {
     app.tell('Goodbye!');
   } else {
-    const inputPrompt = app.buildInputPrompt(
-      true,
-      `<speak>You said, ${app.getRawInput()}</speak>`,
-      NO_INPUTS
-    );
-    app.ask(inputPrompt);
+    app.ask(`You said, ${rawInput}. Can you say something?`);
   }
 };
 
