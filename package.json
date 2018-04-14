@@ -7,6 +7,8 @@
     "firebase": "firebase",
     "start": "npm run shell",
     "shell": "firebase functions:shell",
+    "test": "npm run eslint",
+    "eslint": "eslint src",
     "deploy": "firebase deploy --only functions",
     "deploy-action": "gactions update --action_package action.json --project ${PROJECT}"
   },
@@ -19,7 +21,18 @@
     "firebase-functions": "^1.0.1"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
     "firebase-tools": "^3.18.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2015
+    },
+    "extends": "eslint:recommended"
   },
   "keywords": ["Actions on Google", "Cloud Functions for Firebase"],
   "license": "MIT"
