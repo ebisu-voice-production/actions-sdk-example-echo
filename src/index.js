@@ -1,22 +1,18 @@
-const ActionsSdkApp = require('actions-on-google').ActionsSdkApp;
 const functions = require('firebase-functions');
+const app = require('actions-on-google').actionssdk();
 
-const mainIntent = app => {
-  app.ask('Hi! Can you say something? You can finish this conversation to say bye.');
+const mainIntent = conv => {
+  conv.ask('Hi! Can you say something? You can finish this conversation to say bye.');
 };
-const rawInput = app => {
-  const rawInput = app.getRawInput();
+const subIntent = (conv, rawInput) => {
   if (rawInput === 'bye') {
-    app.tell('Goodbye!');
+    conv.close('Goodbye!');
   } else {
-    app.ask(`You said, ${rawInput}. Can you say something?`);
+    conv.ask(`You said, ${rawInput}. Can you say something?`);
   }
 };
 
-exports.echo = functions.https.onRequest((request, response) => {
-  const app = new ActionsSdkApp({ request, response });
-  const actionMap = new Map();
-  actionMap.set('actions.intent.MAIN', mainIntent);
-  actionMap.set('actions.intent.TEXT', rawInput);
-  app.handleRequest(actionMap);
-});
+app.intent('actions.intent.MAIN', mainIntent);
+app.intent('actions.intent.TEXT', subIntent);
+
+exports.echo = functions.https.onRequest(app);
