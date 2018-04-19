@@ -32,7 +32,10 @@
     "parserOptions": {
       "ecmaVersion": 2015
     },
-    "extends": "eslint:recommended"
+    "extends": "eslint:recommended",
+    "rules": {
+      "no-console": "off"
+    }
   },
   "keywords": [
     "Actions on Google",
